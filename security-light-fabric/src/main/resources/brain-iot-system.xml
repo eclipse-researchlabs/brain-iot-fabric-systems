@@ -29,7 +29,6 @@
       <!-- This version sets a different file location -->
       <!-- <property name="connection.settings"
                 value="/opt/fabric/brain-iot/settings.xml">  -->
-      -->
     </config>
 
     <!-- replicate Core system.part to all nodes -->
