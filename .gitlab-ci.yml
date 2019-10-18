@@ -34,7 +34,7 @@ systems-test:
 systems-deploy:
   stage: deploy
   script:
-    - mvn $MAVEN_CLI_OPTS $MAVEN_DEPLOY_OPTS -pl !fabric-systems package site:deploy
+    - mvn $MAVEN_CLI_OPTS $MAVEN_DEPLOY_OPTS -pl !:fabric-systems package site:deploy
   artifacts:
     paths:
     - behaviour-marketplace-maven-plugin/target/surefire-reports/*.txt
