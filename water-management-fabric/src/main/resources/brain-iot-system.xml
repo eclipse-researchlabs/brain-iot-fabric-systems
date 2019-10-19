@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <system xmlns="http://schema.paremus.com/sf/1.2"
-        name="Brain-IoT-Smart-Security-Light-Fabric"
+        name="Brain-IoT-Water-Management-Fabric"
         version="1.0.0"
         repopath="brain-iot-repos/core/index.xml,brain-iot-repos/ui/index.xml"
         boundary="fabric">
 
-  <system.part name="Core">
+  <system.part name="Machine-Learning">
     <config pid="eu.brain.iot.BehaviourManagementService">
+      
       <!-- brain-iot marketplace indexes (comma separated) -->
       <property name="indexes"
-                value="https://nexus.repository-pert.ismb.it/repository/marketplaces/com.paremus.brain.iot.marketplace/security-light-marketplace/0.0.1-SNAPSHOT/index.xml" />
+                value="https://nexus.repository-pert.ismb.it/repository/marketplaces/com.paremus.brain.iot.marketplace/water-management-marketplace/0.0.1-SNAPSHOT/index.xml" />
+      
+      <!-- Install the ML behaviour here -->
+      <property name="preinstalled.behaviours"
+                value="eu.brain.iot.water.management.ml.behaviour:1.0.0.SNAPSHOT"/>
       
       <!-- BND connection settings, used if the marketplace requires authentication and required on all nodes running as fibres-->
       
@@ -22,20 +27,64 @@
       <!-- <property name="connection.settings"
                 value="server;id=https://nexus.repository-pert.ismb.it;username=${envcfg#MARKET_PLACE_USER};password=${envcfg#MARKET_PLACE_PASSWORD}"/>  -->
       
-      <!-- This version defaults to $HOME/.m2/settings.xml -->
-      <property name="connection.settings"
-                value=""/>
+      <!-- This version defaults to default is $HOME/.m2/settings.xml -->
+      <!-- <property name="connection.settings"
+                value=""/>  -->
 
       <!-- This version sets a different file location -->
       <!-- <property name="connection.settings"
                 value="/opt/fabric/brain-iot/settings.xml"/>  -->
     </config>
 
-    <!-- replicate Core system.part to all nodes -->
-    <replication.handler name="scale" type="scalable">
-      <property name="scaleFactor" value="1.0" type="float" />
-      <property name="minimum" value="1" type="integer" />
-    </replication.handler>
+    <!-- The core BRAIN-IoT fabric requirements -->
+    <system.part.element name="com.paremus.brain.iot.eventing.impl"
+                         category="osgi.bundle" />
+    <system.part.element name="com.paremus.brain.iot.management.impl"
+                         category="osgi.bundle" />
+    <system.part.element name="com.paremus.brain.iot.installer.impl"
+                         category="osgi.bundle" />
+    <system.part.element name="com.paremus.brain.iot.resolver.impl"
+                         category="osgi.bundle" />
+    <system.part.element name="com.paremus.ui.metaconfig"
+                         category="osgi.bundle" />
+  </system.part>
+
+  <system.part name="Sensinact-Bridge">
+    <config pid="eu.brain.iot.BehaviourManagementService">
+      
+      <!-- brain-iot marketplace indexes (comma separated) -->
+      <property name="indexes"
+                value="https://nexus.repository-pert.ismb.it/repository/marketplaces/com.paremus.brain.iot.marketplace/water-management-marketplace/0.0.1-SNAPSHOT/index.xml" />
+      
+      <!-- Install the Sensinact Bridge behaviour here -->
+      <property name="preinstalled.behaviours"
+                value="fr.cea.brainiot.app:1.0.0.SNAPSHOT"/>
+      
+      <!-- BND connection settings, used if the marketplace requires authentication and required on all nodes running as fibres-->
+      
+      <!-- 
+         This version uses environment variables which must be set
+         when launching the Paremus Service Fabric fibres
+         MARKET_PLACE_USER - the user name
+         MARKET_PLACE_PASSWORD - the password
+       -->
+      <!-- <property name="connection.settings"
+                value="server;id=https://nexus.repository-pert.ismb.it;username=${envcfg#MARKET_PLACE_USER};password=${envcfg#MARKET_PLACE_PASSWORD}"/>  -->
+      
+      <!-- This version defaults to default is $HOME/.m2/settings.xml -->
+      <!-- <property name="connection.settings"
+                value=""/>  -->
+
+      <!-- This version sets a different file location -->
+      <!-- <property name="connection.settings"
+                value="/opt/fabric/brain-iot/settings.xml"/>  -->
+    </config>
+    
+    <!-- Configuration for the sensiNact bridge -->
+    <config pid="fr.cea.brainiot.SensinactRequestForwarder">
+      <property name="sna.host" value="193.48.18.248"/>
+      <property name="sna.port" value="8081"/>
+    </config>
 
     <!-- The core BRAIN-IoT fabric requirements -->
     <system.part.element name="com.paremus.brain.iot.eventing.impl"
