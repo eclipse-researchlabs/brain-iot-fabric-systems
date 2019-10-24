@@ -58,5 +58,6 @@
     
     <modules>
         <module>security-light-fabric</module>
+        <module>service-robotic-fabric</module>
     </modules>
 </project>
