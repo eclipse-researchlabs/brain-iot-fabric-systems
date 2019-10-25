@@ -9,7 +9,7 @@
     <config pid="eu.brain.iot.BehaviourManagementService">
       <!-- brain-iot marketplace indexes (comma separated) -->
       <property name="indexes"
-                value="http://10.8.0.98/com.paremus.brain.iot.marketplace/service-robotic-marketplace/0.0.1-SNAPSHOT/index.xml" />
+                value="https://nexus.repository-pert.ismb.it/repository/marketplaces/com.paremus.brain.iot.marketplace/service-robotic-marketplace/0.0.1-SNAPSHOT/index.html" />
       
       <!-- BND connection settings, used if the marketplace requires authentication and required on all nodes running as fibres-->
       
