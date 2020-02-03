@@ -14,7 +14,7 @@
       
       <!-- Install the ML behaviour here -->
       <property name="preinstalled.behaviours"
-                value="eu.brain.iot.water.management.ml.behaviour:1.0.0.SNAPSHOT"/>
+                value="eu.brain.iot.water.management.mlbehaviour:1.0.1.SNAPSHOT"/>
       
       <!-- BND connection settings, used if the marketplace requires authentication and required on all nodes running as fibres-->
       
@@ -58,7 +58,7 @@
       
       <!-- Install the Sensinact Bridge behaviour here -->
       <property name="preinstalled.behaviours"
-                value="fr.cea.brainiot.app:1.0.0.SNAPSHOT"/>
+                value="ffr.cea.brainiot.eventbus.impl:1.0.2.SNAPSHOT"/>
       
       <!-- BND connection settings, used if the marketplace requires authentication and required on all nodes running as fibres-->
       
