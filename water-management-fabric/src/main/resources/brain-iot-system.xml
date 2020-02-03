@@ -36,6 +36,9 @@
                 value="/opt/fabric/brain-iot/settings.xml"/>  -->
     </config>
 
+    <!-- deploy to node with label NUC -->
+    <contract features="(NUC=*)" cancelationCost="-1"/>
+
     <!-- The core BRAIN-IoT fabric requirements -->
     <system.part.element name="com.paremus.brain.iot.eventing.impl"
                          category="osgi.bundle" />
@@ -58,7 +61,7 @@
       
       <!-- Install the Sensinact Bridge behaviour here -->
       <property name="preinstalled.behaviours"
-                value="ffr.cea.brainiot.eventbus.impl:1.0.2.SNAPSHOT"/>
+                value="fr.cea.brainiot.eventbus.impl:1.0.2.SNAPSHOT"/>
       
       <!-- BND connection settings, used if the marketplace requires authentication and required on all nodes running as fibres-->
       
@@ -108,7 +111,9 @@
     <!-- configure jetty for UI -->
     <config pid="org.apache.felix.http" factory="true">
       <property name="org.osgi.service.http.port" value="8888" />
+      <!-- Removed so will listen on all addresses now:
       <property name="org.apache.felix.http.host" value="${clusterAddress#}" />
+      -->
       <property name="org.eclipse.jetty.servlet.SessionCookie"
                 value="Paremus-SessionId" />
     </config>
