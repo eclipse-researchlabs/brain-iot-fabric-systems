@@ -60,5 +60,6 @@
         <module>security-light-fabric</module>
         <module>service-robotic-fabric</module>
         <module>water-management-fabric</module>
+        <module>service-robotic-fabric-update</module>
     </modules>
 </project>
