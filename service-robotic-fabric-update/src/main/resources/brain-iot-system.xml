@@ -81,7 +81,7 @@
     </config>
     
     <config pid="eu.brain.iot.example.robot.Door">
-        <property name="host" value="localhost"/>
+        <property name="host" value="10.8.0.106"/>
         <property name="port" value="8080"/>
         <property name="id" value="ExampleDoor"/>
     </config>
