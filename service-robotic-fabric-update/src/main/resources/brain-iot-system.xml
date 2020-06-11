@@ -83,6 +83,8 @@
         <property name="port" value="8080"/>
         <property name="id" value="ExampleDoor"/>
     </config>
+    <!-- deploy to node with label UI -->
+    <contract features="(ROS=*)" cancelationCost="-1"/>
 
     <!-- The core BRAIN-IoT fabric requirements -->
     <system.part.element name="com.paremus.brain.iot.eventing.impl"
@@ -105,9 +107,10 @@
       
       <!-- Install the ML behaviour here -->
       <property name="preinstalled.behaviours"
-                value="eu.brain.iot.service.robotic.eu.brain.iot.ros.edge.node:1.0.0.SNAPSHOT"/>
+                value="eu.brain.iot.service.robotic.eu.brain.iot.robot.service:1.0.0.SNAPSHOT,eu.brain.iot.service.robotic.eu.brain.iot.robot.msgs:1.0.0.SNAPSHOT,eu.brain.iot.service.robotic.be.iminds.iot.ros.core:0.3.0.SNAPSHOT"/>
                 
-               <!-- value="eu.brain.iot.service.robotic.eu.brain.iot.robot.service:1.0.0.SNAPSHOT;eu.brain.iot.service.robotic.be.iminds.iot.ros.core:0.3.0.SNAPSHOT"/> -->
+                <!-- value="eu.brain.iot.service.robotic.eu.brain.iot.ros.edge.node:1.0.0.SNAPSHOT"/> -->
+               <!-- value="eu.brain.iot.service.robotic.eu.brain.iot.robot.service:1.0.0.SNAPSHOT,eu.brain.iot.service.robotic.be.iminds.iot.ros.core:0.3.0.SNAPSHOT"/> -->
       
       <!-- BND connection settings, used if the marketplace requires authentication and required on all nodes running as fibres-->
       
