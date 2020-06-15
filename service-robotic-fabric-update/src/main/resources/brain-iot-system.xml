@@ -135,6 +135,8 @@
                          category="osgi.bundle" />
     <system.part.element name="com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider"
                          category="osgi.bundle" />
+    <system.part.element name="com.paremus.brain.iot.management.impl"
+                         category="osgi.bundle" />
   </system.part>
 
 </system>
