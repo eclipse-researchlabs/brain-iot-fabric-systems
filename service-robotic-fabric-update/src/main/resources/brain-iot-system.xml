@@ -160,6 +160,7 @@
         <property name="name" value="rb1_base_c"/>
     </config>
 
+
 	<!-- deploy to node with label UI -->
     <contract features="(ROS=*)" cancelationCost="-1"/>
     
