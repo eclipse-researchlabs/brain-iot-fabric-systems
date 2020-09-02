@@ -48,6 +48,8 @@
                          category="osgi.bundle" />
     <system.part.element name="com.paremus.ui.metaconfig"
                          category="osgi.bundle" />
+    <system.part.element name="com.paremus.brain.iot.message.integrity.insecure.impl"
+                         category="osgi.bundle" />                         
   </system.part>
   
   <system.part name="Door">
@@ -99,6 +101,9 @@
                          category="osgi.bundle" />
     <system.part.element name="com.paremus.ui.metaconfig"
                          category="osgi.bundle" />
+    <system.part.element name="com.paremus.brain.iot.message.integrity.insecure.impl"
+                         category="osgi.bundle" />
+    
   </system.part>
   
   <system.part name="Robots">
@@ -169,6 +174,8 @@
                          category="osgi.bundle" />
     <system.part.element name="com.paremus.ui.metaconfig"
                          category="osgi.bundle" />
+    <system.part.element name="com.paremus.brain.iot.message.integrity.insecure.impl"
+                         category="osgi.bundle" />                         
   </system.part>
   
   <system.part name="UI">

@@ -64,6 +64,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <phase>generate-resources</phase>
@@ -81,7 +82,11 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- The Site Plugin is used to generate a site for the project, also including a project's reports that were configured in the POM,
+             site:deploy is used to deploy the generated site using Wagon supported protocol to the site URL specified in the <distributionManagement> section of the POM.
+             -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.4</version>
                 <dependencies>
