@@ -46,6 +46,8 @@
                          category="osgi.bundle" />
     <system.part.element name="com.paremus.brain.iot.resolver.impl"
                          category="osgi.bundle" />
+    <system.part.element name="com.paremus.brain.iot.message.integrity.insecure.impl"
+                         category="osgi.bundle"/>
     <system.part.element name="com.paremus.ui.metaconfig"
                          category="osgi.bundle" />
   </system.part>
