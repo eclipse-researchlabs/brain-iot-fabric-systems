@@ -44,6 +44,8 @@
                          category="osgi.bundle" />
     <system.part.element name="com.paremus.brain.iot.resolver.impl"
                          category="osgi.bundle" />
+    <system.part.element name="com.paremus.brain.iot.message.integrity.insecure.impl"
+                         category="osgi.bundle"/>
     <system.part.element name="com.paremus.ui.metaconfig"
                          category="osgi.bundle" />
   </system.part>
@@ -93,6 +95,8 @@
                          category="osgi.bundle" />
     <system.part.element name="com.paremus.brain.iot.resolver.impl"
                          category="osgi.bundle" />
+    <system.part.element name="com.paremus.brain.iot.message.integrity.insecure.impl"
+                         category="osgi.bundle"/>
     <system.part.element name="com.paremus.ui.metaconfig"
                          category="osgi.bundle" />
   </system.part>
@@ -142,6 +146,8 @@
                          category="osgi.bundle" />
     <system.part.element name="com.paremus.brain.iot.resolver.impl"
                          category="osgi.bundle" />
+    <system.part.element name="com.paremus.brain.iot.message.integrity.insecure.impl"
+                         category="osgi.bundle"/>
     <system.part.element name="com.paremus.ui.metaconfig"
                          category="osgi.bundle" />
   </system.part>
@@ -191,6 +197,8 @@
                          category="osgi.bundle" />
     <system.part.element name="com.paremus.brain.iot.resolver.impl"
                          category="osgi.bundle" />
+    <system.part.element name="com.paremus.brain.iot.message.integrity.insecure.impl"
+                         category="osgi.bundle"/>
     <system.part.element name="com.paremus.ui.metaconfig"
                          category="osgi.bundle" />
   </system.part>
@@ -240,6 +248,8 @@
                          category="osgi.bundle" />
     <system.part.element name="com.paremus.brain.iot.resolver.impl"
                          category="osgi.bundle" />
+    <system.part.element name="com.paremus.brain.iot.message.integrity.insecure.impl"
+                         category="osgi.bundle"/>
     <system.part.element name="com.paremus.ui.metaconfig"
                          category="osgi.bundle" />
   </system.part>
@@ -253,7 +263,6 @@
     <!-- configure jetty for UI -->
     <config pid="org.apache.felix.http" factory="true">
       <property name="org.osgi.service.http.port" value="8888" />
-      <property name="org.apache.felix.http.host" value="${clusterAddress#}" />
       <property name="org.eclipse.jetty.servlet.SessionCookie"
                 value="Paremus-SessionId" />
     </config>

@@ -61,7 +61,6 @@
     <!-- configure jetty for UI -->
     <config pid="org.apache.felix.http" factory="true">
       <property name="org.osgi.service.http.port" value="8888" />
-      <property name="org.apache.felix.http.host" value="${clusterAddress#}" />
       <property name="org.eclipse.jetty.servlet.SessionCookie"
                 value="Paremus-SessionId" />
     </config>
