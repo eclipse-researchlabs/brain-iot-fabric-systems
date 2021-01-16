@@ -1,66 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <system xmlns="http://schema.paremus.com/sf/1.2"
-        name="Brain-IoT-Service-Robotic-Fabric-Update"
+        name="Brain-IoT-Service-Robotic-RosEdgeNode-RobotBehaviour-Door"
         version="1.0.0"
         repopath="brain-iot-repos/core/index.xml,brain-iot-repos/ui/index.xml"
         boundary="fabric">
 
-  <system.part name="Orchestrator">
-    <config pid="eu.brain.iot.BehaviourManagementService">
-      <!-- brain-iot marketplace indexes (comma separated) -->
-      <property name="indexes"
-                value="https://nexus.repository-pert.ismb.it/repository/marketplaces/service.robotic.marketplace.test/service.robotic.marketplace.test/0.0.1-SNAPSHOT/index.xml" />
-      
-      <!-- Install the ML behaviour here -->
-      <property name="preinstalled.behaviours"
-                value="eu.brain.iot.service.robotic.eu.brain.iot.orch.impl:0.0.1.SNAPSHOT"/>
-      
-      <!-- BND connection settings, used if the marketplace requires authentication and required on all nodes running as fibres-->
-      
-      <!-- 
-         This version uses environment variables which must be set
-         when launching the Paremus Service Fabric fibres
-         MARKET_PLACE_USER - the user name
-         MARKET_PLACE_PASSWORD - the password
-       -->
-      <property name="connection.settings"
-                value="server;id=https://nexus.repository-pert.ismb.it;username=${envcfg#MARKET_PLACE_USER};password=${envcfg#MARKET_PLACE_PASSWORD}"></property>
-      
-      <!-- This version defaults to default is $HOME/.m2/settings.xml -->
-      <!-- <property name="connection.settings"
-                value="">  -->
-
-      <!-- This version sets a different file location -->
-      <!-- <property name="connection.settings"
-                value="/opt/fabric/brain-iot/settings.xml">  -->
-    </config>
-    <!-- deploy to node with label ROS 
-    <contract features="(ROS=*)" cancelationCost="-1"/>-->
-    
-    <!-- The core BRAIN-IoT fabric requirements -->
-    <system.part.element name="com.paremus.brain.iot.eventing.impl"
-                         category="osgi.bundle" />
-    <system.part.element name="com.paremus.brain.iot.management.impl"
-                         category="osgi.bundle" />
-    <system.part.element name="com.paremus.brain.iot.installer.impl"
-                         category="osgi.bundle" />
-    <system.part.element name="com.paremus.brain.iot.resolver.impl"
-                         category="osgi.bundle" />
-    <system.part.element name="com.paremus.ui.metaconfig"
-                         category="osgi.bundle" />
-    <system.part.element name="com.paremus.brain.iot.message.integrity.insecure.impl"
-                         category="osgi.bundle" />                         
-  </system.part>
   
   <system.part name="Door">
     <config pid="eu.brain.iot.BehaviourManagementService">
       <!-- brain-iot marketplace indexes (comma separated) -->
       <property name="indexes"
-                value="https://nexus.repository-pert.ismb.it/repository/marketplaces/service.robotic.marketplace.test/service.robotic.marketplace.test/0.0.1-SNAPSHOT/index.xml" />
+                value="https://nexus.repository-pert.ismb.it/repository/marketplaces/service.robotic.marketplace.test/ros.edge.node.marketplace.test/0.0.1-SNAPSHOT/index.xml" />
       
       <!-- Install the ML behaviour here -->
       <property name="preinstalled.behaviours"
-                value="eu.brain.iot.service.robotic.door.impl:0.0.1.SNAPSHOT"/>
+                value="eu.brain.iot.service.robotic.door.impl:0.0.2.SNAPSHOT"/>
       
       <!-- BND connection settings, used if the marketplace requires authentication and required on all nodes running as fibres-->
       
@@ -86,6 +40,7 @@
         <property name="host" value="192.168.2.202"/>
         <property name="port" value="8080"/>
         <property name="id" value="ExampleDoor"/>
+        <property name="path" value="/door1/door_controller/command"/>
     </config>
     <!-- deploy to node with label ROS 
     <contract features="(ROS=*)" cancelationCost="-1"/>-->
@@ -106,15 +61,15 @@
     
   </system.part>
   
-  <system.part name="Robots">
+  <system.part name="Robot-1">
     <config pid="eu.brain.iot.BehaviourManagementService">
       <!-- brain-iot marketplace indexes (comma separated) -->
       <property name="indexes"
-                value="https://nexus.repository-pert.ismb.it/repository/marketplaces/service.robotic.marketplace.test/service.robotic.marketplace.test/0.0.1-SNAPSHOT/index.xml" />
+                value="https://nexus.repository-pert.ismb.it/repository/marketplaces/service.robotic.marketplace.test/ros.edge.node.marketplace.test/0.0.1-SNAPSHOT/index.xml" />
       
       <!-- Install the ML behaviour here -->
       <property name="preinstalled.behaviours"
-                value="eu.brain.iot.service.robotic.eu.brain.iot.ros.edge.node:1.0.0.SNAPSHOT"/>
+                value="eu.brain.iot.service.robotic.eu.brain.iot.robot.behaviour:0.0.2.SNAPSHOT,eu.brain.iot.service.robotic.eu.brain.iot.ros.edge.node:1.0.0.SNAPSHOT"/>
                 
                 <!-- value="eu.brain.iot.service.robotic.eu.brain.iot.ros.edge.node:1.0.0.SNAPSHOT"/> -->
                <!-- value="eu.brain.iot.service.robotic.eu.brain.iot.robot.service:1.0.0.SNAPSHOT,eu.brain.iot.service.robotic.be.iminds.iot.ros.core:0.3.0.SNAPSHOT"/> -->
@@ -139,27 +94,10 @@
                 value="/opt/fabric/brain-iot/settings.xml">  -->
     </config>
     
-    <config pid="eu.brain.iot.example.robot.Robot~robotA">
-        <property name="host" value="localhost"/>
-        <property name="port" value="8080"/>
+    <config pid="eu.brain.iot.example.robot.RobotBehavior">
         <property name="id" value="1"/>
-        <property name="name" value="rb1_base_a"/>
     </config>
     
-    <config pid="eu.brain.iot.example.robot.Robot~robotB">
-        <property name="host" value="localhost"/>
-        <property name="port" value="8080"/>
-        <property name="id" value="2"/>
-        <property name="name" value="rb1_base_b"/>
-    </config>
-    
-    <config pid="eu.brain.iot.example.robot.Robot~robotC">
-        <property name="host" value="localhost"/>
-        <property name="port" value="8080"/>
-        <property name="id" value="3"/>
-        <property name="name" value="rb1_base_c"/>
-    </config>
-
 
 	<!-- deploy to node with label UI -->
     <contract features="(ROS=*)" cancelationCost="-1"/>

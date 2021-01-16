@@ -104,3 +104,5 @@
         </plugins>
     </build>
 </project>
+
+<!-- mvn clean $MAVEN_DEPLOY_OPTS package site:deploy  -->
