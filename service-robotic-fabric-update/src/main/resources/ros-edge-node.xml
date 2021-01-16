@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <system xmlns="http://schema.paremus.com/sf/1.2"
-        name="Brain-IoT-Service-Robotic-Table-Queryer"
+        name="Brain-IoT-Service-Robotic-RosEdgeNode"
         version="1.0.0"
         repopath="brain-iot-repos/core/index.xml,brain-iot-repos/ui/index.xml"
         boundary="fabric">
+
+
   
-  <system.part name="TableQueryer">
+  <system.part name="RosEdgeNode">
     <config pid="eu.brain.iot.BehaviourManagementService">
       <!-- brain-iot marketplace indexes (comma separated) -->
       <property name="indexes"
@@ -13,7 +15,10 @@
       
       <!-- Install the ML behaviour here -->
       <property name="preinstalled.behaviours"
-                value="eu.brain.iot.service.robotic.eu.brain.iot.robot.tables.queryer:0.0.2.SNAPSHOT"/>
+                value="eu.brain.iot.service.robotic.eu.brain.iot.ros.edge.node:1.0.0.SNAPSHOT"/>
+                
+                <!-- value="eu.brain.iot.service.robotic.eu.brain.iot.ros.edge.node:1.0.0.SNAPSHOT"/> -->
+               <!-- value="eu.brain.iot.service.robotic.eu.brain.iot.robot.service:1.0.0.SNAPSHOT,eu.brain.iot.service.robotic.be.iminds.iot.ros.core:0.3.0.SNAPSHOT"/> -->
       
       <!-- BND connection settings, used if the marketplace requires authentication and required on all nodes running as fibres-->
       
@@ -34,8 +39,14 @@
       <!-- <property name="connection.settings"
                 value="/opt/fabric/brain-iot/settings.xml">  -->
     </config>
-    <!-- deploy to node with label ROS -->
-    <contract features="(UI=*)" cancelationCost="-1"/>
+    
+ <!--   <config pid="eu.brain.iot.example.robot.RobotBehavior">
+        <property name="id" value="1"/>
+    </config>  -->
+    
+
+	<!-- deploy to node with label UI -->
+    <contract features="(ROS=*)" cancelationCost="-1"/>
     
     <!-- The core BRAIN-IoT fabric requirements -->
     <system.part.element name="com.paremus.brain.iot.eventing.impl"
@@ -51,6 +62,7 @@
     <system.part.element name="com.paremus.brain.iot.message.integrity.insecure.impl"
                          category="osgi.bundle" />                         
   </system.part>
+  
   
   
   
